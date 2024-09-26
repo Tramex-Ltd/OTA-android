@@ -24,7 +24,7 @@ abstract class BaseMainMenuFragment : Fragment(), WithHidableUIElements {
 
     private fun restoreHiddenUI() {
         hidableActionButton?.show()
-        bottomNav.show()
+       // bottomNav.show()
     }
 
     override fun onResume() {

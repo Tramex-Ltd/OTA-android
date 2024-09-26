@@ -47,7 +47,6 @@ import com.siliconlabs.bledemo.home_screen.base.BaseServiceDependentMainMenuFrag
 import com.siliconlabs.bledemo.home_screen.fragments.ScanFragment
 import com.siliconlabs.bledemo.home_screen.base.ViewPagerFragment
 import com.siliconlabs.bledemo.features.scan.browser.activities.DeviceServicesActivity
-import com.siliconlabs.bledemo.features.scan.browser.activities.UuidDictionaryActivity
 import com.siliconlabs.bledemo.home_screen.viewmodels.ScanFragmentViewModel
 import com.siliconlabs.bledemo.features.scan.browser.adapters.DebugModeCallback
 import com.siliconlabs.bledemo.home_screen.base.BluetoothDependent
@@ -331,10 +330,6 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
                                 Toast.LENGTH_SHORT).show()
                     }
                 }
-                true
-            }
-            R.id.menu_uuid_dictionary -> {
-                startActivity(Intent(requireContext(), UuidDictionaryActivity::class.java))
                 true
             }
             else -> return super.onOptionsItemSelected(item)

@@ -59,9 +59,7 @@ class DebugModeDeviceAdapter(
 
     private fun setupUiListeners(holder: ViewHolder, viewBinding: AdapterBrowserDeviceBinding) {
         viewBinding.apply {
-            expandArrow.setOnClickListener { RecyclerViewUtils.withProperAdapterPosition(holder) { pos ->
-                debugModeCallback.toggleViewExpansion(pos)
-            } }
+
             connectionBtn.setOnClickListener { RecyclerViewUtils.withProperAdapterPosition(holder) { pos ->
                 with(chosenDevices[pos].deviceInfo) {
                     when (connectionState) {
@@ -70,10 +68,6 @@ class DebugModeDeviceAdapter(
                         else -> { }
                     }
                 }
-            } }
-            favoriteBtn.setOnClickListener { RecyclerViewUtils.withProperAdapterPosition(holder) { pos ->
-                val clickedDevice = chosenDevices[pos].deviceInfo
-                toggleFavoriteDevice(clickedDevice)
             } }
         }
     }
@@ -158,16 +152,6 @@ class DebugModeDeviceAdapter(
                         if (info.name.isEmpty()) itemView.context.getString(R.string.not_advertising_shortcut)
                         else info.name
                 tvDeviceAddress.text = context.getString(R.string.string_placeholder, info.address)
-
-                rssi.text = itemView.context.getString(R.string.unit_value_dbm, info.rssi)
-                tvInterval.text = itemView.context.getString(R.string.unit_value_ms, info.intervalNanos / 1000000)
-                deviceType.text = itemView.context.getString(info.bleFormat?.nameResId ?: R.string.unspecified)
-                tvIsConnectable.text = itemView.context.getString(
-                        if (info.isConnectable) R.string.connectible
-                        else R.string.non_connectible
-                )
-                favoriteBtn.isChecked = info.isFavorite
-                tvIsBonded.text = getBondedStateText(info.device.bondState)
                 toggleDetails(viewInfoState.isInfoExpanded)
             }
             addAdvertsDataToContainer(generateAdvertData(info))
@@ -184,22 +168,11 @@ class DebugModeDeviceAdapter(
                     toggleDetails(shouldShowDetails = newState.isInfoExpanded)
                 if (newInfo.name != oldInfo.name)
                     deviceName.text = newInfo.name
-                if (newInfo.rssi != oldInfo.rssi)
-                    rssi.text = context.getString(R.string.unit_value_dbm, newInfo.rssi)
-                if (newInfo.intervalNanos != oldInfo.intervalNanos)
-                    tvInterval.text = context.getString(R.string.unit_value_ms, newInfo.intervalNanos / 1000000)
-                if (newInfo.device.bondState != oldInfo.device.bondState)
-                    tvIsBonded.text = getBondedStateText(newInfo.device.bondState)
                 if (newInfo.connectionState != oldInfo.connectionState) {
                     refreshConnectionButtonState(newInfo)
                 }
-                if (newInfo.isFavorite != oldInfo.isFavorite) {
-                    favoriteBtn.isChecked = newInfo.isFavorite
-                }
                 if (oldInfo.rawData != newInfo.rawData) {
-                    deviceType.text = itemView.context.getString(newInfo.bleFormat?.nameResId ?: R.string.unspecified)
                     manufacturerIcon.setImageDrawable(getManufacturerIcon(newInfo.manufacturer))
-
                     if (newState.isInfoExpanded) addAdvertsDataToContainer(generateAdvertData(newInfo))
                 }
             }
@@ -225,7 +198,6 @@ class DebugModeDeviceAdapter(
             viewBinding.advertisementContainer.visibility =
                     if (shouldShowDetails) View.VISIBLE
                     else View.GONE
-            viewBinding.expandArrow.setState(shouldShowDetails)
         }
 
         private fun generateAdvertData(deviceInfo: BluetoothDeviceInfo) : AdvertisementData {

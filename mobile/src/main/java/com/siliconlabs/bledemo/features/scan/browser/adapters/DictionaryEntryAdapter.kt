@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.siliconlabs.bledemo.features.scan.browser.activities.UuidDictionaryActivity
 import com.siliconlabs.bledemo.features.scan.browser.adapters.DictionaryEntryAdapter.NameMappingViewHolder
 import com.siliconlabs.bledemo.features.scan.browser.dialogs.DictionaryEntryEditDialog
 import com.siliconlabs.bledemo.features.scan.browser.models.Mapping
@@ -48,11 +47,7 @@ class DictionaryEntryAdapter(
 
     private fun setupUiListeners(holder: NameMappingViewHolder, _binding: AdapterDictionaryEntryBinding) {
         _binding.apply {
-            imageViewEditCharacService.setOnClickListener {
-                RecyclerViewUtils.withProperAdapterPosition(holder) { position ->
-                    showEditDialog(this, position)
-                }
-            }
+
             imageButtonDelete.setOnClickListener {
                 RecyclerViewUtils.withProperAdapterPosition(holder) { position ->
                     list.removeAt(position)
@@ -61,19 +56,4 @@ class DictionaryEntryAdapter(
             }
         }
     }
-
-    private fun showEditDialog(_binding: AdapterDictionaryEntryBinding, position: Int) {
-        val mapping = list[position]
-        DictionaryEntryEditDialog(
-                mapping.name,
-                mapping.uuid,
-                type,
-                object : MappingCallback {
-            override fun onNameChanged(mapping: Mapping) {
-                list[position] = mapping
-                _binding.textViewName.text = mapping.name
-            }
-        }).show((context as UuidDictionaryActivity).supportFragmentManager, "dialog_mappings_edit")
-    }
-
 }
