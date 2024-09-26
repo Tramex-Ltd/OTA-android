@@ -186,7 +186,7 @@ class DebugModeDeviceAdapter(
                     text = context.getString( when (deviceInfo.connectionState) {
                         BluetoothDeviceInfo.ConnectionState.CONNECTED -> R.string.button_disconnect
                         BluetoothDeviceInfo.ConnectionState.CONNECTING -> R.string.button_connecting
-                        BluetoothDeviceInfo.ConnectionState.DISCONNECTED -> R.string.button_connect
+                        BluetoothDeviceInfo.ConnectionState.DISCONNECTED -> R.string.button_update
                     })
                 } else {
                     visibility = View.GONE

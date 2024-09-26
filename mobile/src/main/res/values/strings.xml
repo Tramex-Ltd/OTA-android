@@ -198,6 +198,7 @@
     <!-- Buttons -->
     <string name="button_reset">Reset</string>
     <string name="button_connect">Connect</string>
+    <string name="button_update">Update</string>
     <string name="button_connecting">Connecting…</string>
     <string name="button_disconnect">Disconnect</string>
     <string name="button_save">Save</string>

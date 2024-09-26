@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:minHeight="@dimen/card_view_main_icon_dimension"
-                    tools:text="@string/button_connect" />
+                    tools:text="@string/button_update" />
 
             </LinearLayout>
 
