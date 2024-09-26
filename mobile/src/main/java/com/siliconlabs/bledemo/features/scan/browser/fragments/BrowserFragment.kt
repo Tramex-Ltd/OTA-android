@@ -320,18 +320,6 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
                 getScanFragment().toggleFilterFragment(shouldShowFilterFragment = true)
                 true
             }
-            R.id.menu_sort -> {
-                viewModel.let { model ->
-                    devicesAdapter?.let { adapter ->
-                        model.sortDevices()
-                        adapter.updateDevices(model.getBluetoothInfoViewsState(), withMoves = true)
-                        viewBinding.rvDebugDevices.scrollToPosition(0)
-                        Toast.makeText(requireContext(), getString(R.string.devices_sorted_by_descending_rssi),
-                                Toast.LENGTH_SHORT).show()
-                    }
-                }
-                true
-            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
