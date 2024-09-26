@@ -7,12 +7,14 @@
     <item android:id="@+id/demoFragment"
         android:icon="@drawable/redesign_ic_main_navigation_demo"
         android:menuCategory="secondary"
-        android:title="@string/main_navigation_demo_title" />
+        android:title="@string/main_navigation_demo_title"
+        android:visible="false"/>
 
     <item android:id="@+id/testFragment"
         android:icon="@drawable/redesign_ic_main_navigation_iop"
         android:menuCategory="secondary"
-        android:title="@string/main_navigation_test_title" />
+        android:title="@string/main_navigation_test_title"
+        android:visible="false"/>
 
     <item android:id="@+id/scanFragment"
         android:icon="@drawable/redesign_ic_main_navigation_scan"
@@ -22,11 +24,13 @@
     <item android:id="@+id/configureFragment"
         android:icon="@drawable/redesign_ic_main_navigation_configure"
         android:menuCategory="secondary"
-        android:title="@string/main_navigation_configure_title" />
+        android:title="@string/main_navigation_configure_title"
+        android:visible="false"/>
 
     <item android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"
         android:menuCategory="secondary"
-        android:title="@string/action_settings" />
+        android:title="@string/action_settings"
+        android:visible="false"/>
 
 </menu>
