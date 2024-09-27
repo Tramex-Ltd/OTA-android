@@ -585,24 +585,7 @@ class DeviceServicesActivity : BaseActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.show_logs -> showLogFragment()
-            R.id.request_priority -> {
-                ConnectionRequestDialog(connectionPriority, connectionRequestCallback)
-                        .show(supportFragmentManager, CONNECTION_REQUEST_DIALOG_FRAGMENT)
-            }
-            R.id.request_mtu -> {
-                mtuRequestDialog = MtuRequestDialog(MTU, mtuRequestCallback).also {
-                    it.show(supportFragmentManager, MTU_REQUEST_DIALOG_FRAGMENT)
-                }
-            }
-            android.R.id.home -> {
-                onBackPressed()
-                return true
-            }
-            else -> { }
-        }
-        return super.onOptionsItemSelected(item)
+     return true
     }
 
     override fun onBackPressed() {
