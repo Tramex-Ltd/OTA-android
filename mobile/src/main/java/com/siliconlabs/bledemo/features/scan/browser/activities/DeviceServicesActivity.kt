@@ -444,39 +444,8 @@ class DeviceServicesActivity : BaseActivity() {
             add(R.id.services_fragment_container, remoteServicesFragment)
         }.commit()
 
-        services_bottom_nav.setOnNavigationItemSelectedListener { item ->
-            (when (item.itemId) {
-                R.id.services_nav_remote -> {
-                    toggleRemoteActions(isRemoteFragmentOn = true)
-                    supportActionBar?.title = getDeviceName()
-                    remoteServicesFragment
-                }
-                R.id.services_nav_local -> {
-                    toggleRemoteActions(isRemoteFragmentOn = false)
-                    supportActionBar?.title = bluetoothService?.bluetoothAdapter?.name
-                    localServicesFragment
-                }
-                else -> null
-            })?.let { newFragment ->
-                supportFragmentManager.beginTransaction().apply {
-                    hide(activeFragment)
-                    show(newFragment)
-                }.commit()
-                activeFragment = newFragment
-                true
-            } ?: false
-        }
     }
 
-    private fun toggleRemoteActions(isRemoteFragmentOn: Boolean) {
-        btn_bond_action.visibility =
-                if (isRemoteFragmentOn) View.VISIBLE
-                else View.GONE
-        connection_info.visibility =
-                if (isRemoteFragmentOn) View.VISIBLE
-                else View.GONE
-        toggleMenuItemsVisibility(isRemoteFragmentOn)
-    }
 
     private fun toggleMenuItemsVisibility(areVisible: Boolean) {
         menu.children.forEach {
