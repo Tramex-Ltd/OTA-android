@@ -63,11 +63,6 @@ class LogFragment : Fragment() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
-        with(menu) {
-            findItem(R.id.show_logs)?.isVisible = false
-            findItem(R.id.request_priority)?.isVisible = false
-            findItem(R.id.request_mtu)?.isVisible = false
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

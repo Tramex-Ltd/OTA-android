@@ -99,18 +99,8 @@ class DeviceServicesActivity : BaseActivity() {
     var bluetoothGatt: BluetoothGatt? = null
 
     private var retryAttempts = 0
-
-    private val hideFabOnScrollChangeListener = OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-        if (scrollY > oldScrollY) {
-            btn_bond_action.hide()
-        } else {
-            btn_bond_action.show()
-        }
-    }
-
-    private val remoteServicesFragment = RemoteServicesFragment(hideFabOnScrollChangeListener)
     private val localServicesFragment = LocalServicesFragment()
-    private var activeFragment: Fragment = remoteServicesFragment
+
 
     private val bondStateChangeListener = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -222,7 +212,6 @@ class DeviceServicesActivity : BaseActivity() {
             status: Int
         ) {
             super.onCharacteristicRead(gatt, characteristic, status)
-            remoteServicesFragment.updateCurrentCharacteristicView(characteristic.uuid)
 
             if (viewState == ViewState.REBOOTING_NEW_FIRMWARE) {
                 runOnUiThread { supportActionBar?.title = characteristic.getStringValue(0) }
@@ -244,7 +233,6 @@ class DeviceServicesActivity : BaseActivity() {
             status: Int
         ) {
             super.onCharacteristicWrite(gatt, characteristic, status)
-            remoteServicesFragment.updateCurrentCharacteristicView(characteristic.uuid, status)
 
             if (status != BluetoothGatt.GATT_SUCCESS) {
                 showErrorDialog(status)
@@ -283,19 +271,18 @@ class DeviceServicesActivity : BaseActivity() {
         //CALLBACK ON DESCRIPTOR WRITE
         override fun onDescriptorWrite(gatt: BluetoothGatt, descriptor: BluetoothGattDescriptor, status: Int) {
             super.onDescriptorWrite(gatt, descriptor, status)
-            remoteServicesFragment.updateDescriptorView(descriptor)
+
         }
 
         //CALLBACK ON DESCRIPTOR READ
         override fun onDescriptorRead(gatt: BluetoothGatt, descriptor: BluetoothGattDescriptor, status: Int) {
             super.onDescriptorRead(gatt, descriptor, status)
-            remoteServicesFragment.updateDescriptorView(descriptor)
         }
 
         //CALLBACK ON CHARACTERISTIC CHANGED VALUE (READ - CHARACTERISTIC NOTIFICATION)
         override fun onCharacteristicChanged(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) {
             super.onCharacteristicChanged(gatt, characteristic)
-            remoteServicesFragment.updateCharacteristicView(characteristic)
+
         }
 
         //CALLBACK ON SERVICES DISCOVERED
@@ -439,43 +426,8 @@ class DeviceServicesActivity : BaseActivity() {
 
     private fun setupBottomNavigation() {
         supportFragmentManager.beginTransaction().apply {
-            add(R.id.services_fragment_container, localServicesFragment)
             hide(localServicesFragment)
-            add(R.id.services_fragment_container, remoteServicesFragment)
         }.commit()
-
-        services_bottom_nav.setOnNavigationItemSelectedListener { item ->
-            (when (item.itemId) {
-                R.id.services_nav_remote -> {
-                    toggleRemoteActions(isRemoteFragmentOn = true)
-                    supportActionBar?.title = getDeviceName()
-                    remoteServicesFragment
-                }
-                R.id.services_nav_local -> {
-                    toggleRemoteActions(isRemoteFragmentOn = false)
-                    supportActionBar?.title = bluetoothService?.bluetoothAdapter?.name
-                    localServicesFragment
-                }
-                else -> null
-            })?.let { newFragment ->
-                supportFragmentManager.beginTransaction().apply {
-                    hide(activeFragment)
-                    show(newFragment)
-                }.commit()
-                activeFragment = newFragment
-                true
-            } ?: false
-        }
-    }
-
-    private fun toggleRemoteActions(isRemoteFragmentOn: Boolean) {
-        btn_bond_action.visibility =
-                if (isRemoteFragmentOn) View.VISIBLE
-                else View.GONE
-        connection_info.visibility =
-                if (isRemoteFragmentOn) View.VISIBLE
-                else View.GONE
-        toggleMenuItemsVisibility(isRemoteFragmentOn)
     }
 
     private fun toggleMenuItemsVisibility(areVisible: Boolean) {
@@ -496,13 +448,7 @@ class DeviceServicesActivity : BaseActivity() {
         tv_ota_firmware.setOnClickListener {
             if (isUiCreated) checkForOtaCharacteristic()
         }
-        btn_bond_action.setOnClickListener {
-            bluetoothGatt?.device?.let { when (it.bondState) {
-                BluetoothDevice.BOND_BONDED -> askUnbondDevice(it)
-                BluetoothDevice.BOND_NONE -> it.createBond()
-                else -> { }
-            } }
-        }
+
     }
 
     private fun checkForOtaCharacteristic() {
@@ -511,42 +457,12 @@ class DeviceServicesActivity : BaseActivity() {
     }
 
     private fun registerReceivers() {
-
         registerReceiver(bluetoothReceiver, IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED))
         registerReceiver(bondStateChangeListener, IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED))
-
     }
 
     private fun displayBondState(newState: Int? = null) {
         val state = newState ?: bluetoothGatt?.device?.bondState ?: BluetoothDevice.BOND_NONE
-
-        when (state) {
-            BluetoothDevice.BOND_BONDED -> {
-                tv_bond_state.text = getString(R.string.bonded)
-                btn_bond_action.apply {
-                    isEnabled = true
-                    text = getString(R.string.delete_bond)
-                    setIsActionOn(true)
-                }
-            }
-            BluetoothDevice.BOND_BONDING -> {
-                tv_bond_state.text = getString(R.string.bonding)
-                btn_bond_action.apply {
-                    isEnabled = false
-                    text = getString(R.string.bonding)
-                }
-            }
-            BluetoothDevice.BOND_NONE -> {
-                tv_bond_state.text = getString(R.string.not_bonded)
-                btn_bond_action.apply {
-                    isEnabled = true
-                    text = getString(R.string.create_bond)
-                    setIsActionOn(false)
-                }
-
-            }
-            else -> { }
-        }
     }
 
     private fun getOtaControlCharacteristic() : BluetoothGattCharacteristic? {
@@ -617,16 +533,6 @@ class DeviceServicesActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.show_logs -> showLogFragment()
-            R.id.request_priority -> {
-                ConnectionRequestDialog(connectionPriority, connectionRequestCallback)
-                        .show(supportFragmentManager, CONNECTION_REQUEST_DIALOG_FRAGMENT)
-            }
-            R.id.request_mtu -> {
-                mtuRequestDialog = MtuRequestDialog(MTU, mtuRequestCallback).also {
-                    it.show(supportFragmentManager, MTU_REQUEST_DIALOG_FRAGMENT)
-                }
-            }
             android.R.id.home -> {
                 onBackPressed()
                 return true
@@ -724,7 +630,6 @@ class DeviceServicesActivity : BaseActivity() {
 
     fun refreshServices() {
         bluetoothGatt?.let {
-            remoteServicesFragment.clear()
             localServicesFragment.clear()
             showCharacteristicLoadingAnimation(getString(R.string.debug_mode_device_refreshing_services))
 
@@ -808,7 +713,6 @@ class DeviceServicesActivity : BaseActivity() {
             hideOtaProgressDialog()
             showMessage(getString(R.string.ota_uploading_successful))
 
-            remoteServicesFragment.clear()
             localServicesFragment.clear()
             showCharacteristicLoadingAnimation(getString(R.string.debug_mode_device_rebooting_firmware))
 
@@ -842,7 +746,6 @@ class DeviceServicesActivity : BaseActivity() {
     }
 
     private fun initServicesFragments(services: List<BluetoothGattService>) {
-        remoteServicesFragment.init(services)
         localServicesFragment.init(services)
         hideCharacteristicLoadingAnimation()
     }
@@ -1047,7 +950,7 @@ class DeviceServicesActivity : BaseActivity() {
 
     private fun showCharacteristicLoadingAnimation(barLabel: String) {
         runOnUiThread {
-            btn_bond_action.visibility = View.GONE
+
             tv_bond_state_with_rssi.visibility = View.GONE
             fly_in_bar.apply {
                 setOnClickListener { /* this onclicklistener prevents services and characteristics from user interaction before ui is loaded*/ }
@@ -1062,7 +965,6 @@ class DeviceServicesActivity : BaseActivity() {
             fly_in_bar.startFlyOutAnimation(object : FlyInBar.Callback {
                 override fun onFlyOutAnimationEnded() {
                     fly_in_bar.visibility = View.GONE
-                    btn_bond_action.visibility = View.VISIBLE
                     tv_bond_state_with_rssi.visibility = View.VISIBLE
                 }
             })
@@ -1131,9 +1033,7 @@ class DeviceServicesActivity : BaseActivity() {
         if ((uri?.scheme == "content")) {
             val cursor = contentResolver.query(uri, null, null, null, null)
             cursor.use { c ->
-                if (c != null && c.moveToFirst()) {
-                    result = c.getString(c.getColumnIndex(OpenableColumns.DISPLAY_NAME))
-                }
+
             }
         }
         if (result == null) {
