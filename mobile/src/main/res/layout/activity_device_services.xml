@@ -35,21 +35,6 @@
                 android:layout_centerVertical="true" >
 
                 <TextView
-                    android:id="@+id/tv_bond_state"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/silabs_black"
-                    tools:text="BONDED" />
-
-                <TextView
-                    android:id="@+id/separator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/separator"
-                    android:textColor="@color/silabs_black"
-                    android:layout_marginHorizontal="@dimen/space_XXS" />
-
-                <TextView
                     android:id="@+id/tv_rssi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
