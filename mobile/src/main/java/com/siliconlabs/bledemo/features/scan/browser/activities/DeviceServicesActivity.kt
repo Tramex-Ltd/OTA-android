@@ -102,9 +102,9 @@ class DeviceServicesActivity : BaseActivity() {
 
     private val hideFabOnScrollChangeListener = OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
         if (scrollY > oldScrollY) {
-            btn_bond_action.hide()
+            // btn_bond_action.hide()
         } else {
-            btn_bond_action.show()
+            // btn_bond_action.show()
         }
     }
 
@@ -465,13 +465,13 @@ class DeviceServicesActivity : BaseActivity() {
         tv_ota_firmware.setOnClickListener {
             if (isUiCreated) checkForOtaCharacteristic()
         }
-        btn_bond_action.setOnClickListener {
+       /* btn_bond_action.setOnClickListener {
             bluetoothGatt?.device?.let { when (it.bondState) {
                 BluetoothDevice.BOND_BONDED -> askUnbondDevice(it)
                 BluetoothDevice.BOND_NONE -> it.createBond()
                 else -> { }
             } }
-        }
+        } */
     }
 
     private fun checkForOtaCharacteristic() {
@@ -487,9 +487,9 @@ class DeviceServicesActivity : BaseActivity() {
     }
 
     private fun displayBondState(newState: Int? = null) {
-        val state = newState ?: bluetoothGatt?.device?.bondState ?: BluetoothDevice.BOND_NONE
+      //val state = newState ?: bluetoothGatt?.device?.bondState ?: BluetoothDevice.BOND_NONE
 
-        when (state) {
+     /*when (state) {
             BluetoothDevice.BOND_BONDED -> {
                 tv_bond_state.text = getString(R.string.bonded)
                 btn_bond_action.apply {
@@ -515,7 +515,7 @@ class DeviceServicesActivity : BaseActivity() {
 
             }
             else -> { }
-        }
+        } */
     }
 
     private fun getOtaControlCharacteristic() : BluetoothGattCharacteristic? {
@@ -1016,7 +1016,7 @@ class DeviceServicesActivity : BaseActivity() {
 
     private fun showCharacteristicLoadingAnimation(barLabel: String) {
         runOnUiThread {
-            btn_bond_action.visibility = View.GONE
+          //  btn_bond_action.visibility = View.GONE
             tv_bond_state_with_rssi.visibility = View.GONE
             fly_in_bar.apply {
                 setOnClickListener { /* this onclicklistener prevents services and characteristics from user interaction before ui is loaded*/ }
@@ -1031,7 +1031,7 @@ class DeviceServicesActivity : BaseActivity() {
             fly_in_bar.startFlyOutAnimation(object : FlyInBar.Callback {
                 override fun onFlyOutAnimationEnded() {
                     fly_in_bar.visibility = View.GONE
-                    btn_bond_action.visibility = View.VISIBLE
+                    // btn_bond_action.visibility = View.VISIBLE
                     tv_bond_state_with_rssi.visibility = View.VISIBLE
                 }
             })

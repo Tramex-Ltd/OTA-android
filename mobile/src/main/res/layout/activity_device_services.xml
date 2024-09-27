@@ -81,17 +81,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <com.siliconlabs.bledemo.common.views.MainActionButton
-                android:id="@+id/btn_bond_action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/extended_fab_margin"
-                android:text="@string/create_bond"
-                android:visibility="gone"
-                tools:visibility="visible"
-                tools:text="@string/create_bond" />
         </RelativeLayout>
 
         <com.siliconlabs.bledemo.common.views.FlyInBar
