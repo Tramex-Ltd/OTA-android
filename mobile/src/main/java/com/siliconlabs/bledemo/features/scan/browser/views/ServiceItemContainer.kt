@@ -43,38 +43,12 @@ class ServiceItemContainer(
                 visibility = View.GONE
                 removeAllViews()
             }
-            serviceTitle.text = getServiceName()
-            tvRenameService.visibility = when (nameType) {
-                NameType.ENGINE, NameType.CUSTOM -> View.GONE
-                NameType.USER, NameType.UNKNOWN -> View.VISIBLE
-            }
-            serviceUuid.text = UuidUtils.getUuidText(service.uuid)
 
-
-            if (service.characteristics.isEmpty()) {
-                characteristicsSeparator.visibility = GONE
-                tvMoreInfo.visibility = GONE
-                expandArrow.visibility = GONE
-                tvNoCharacteristics.visibility = VISIBLE
-            }
         }
     }
 
     private fun setupUiListeners() {
-        _binding.apply {
-            tvRenameService.setOnClickListener { callback.onRenameClicked(this@ServiceItemContainer) }
-            expandArrow.setOnClickListener {
-                if (serviceCharacteristicsContainer.visibility == View.VISIBLE) {
-                    tvMoreInfo.text = resources.getString(R.string.more_info)
-                    serviceCharacteristicsContainer.visibility = View.GONE
-                    expandArrow.setState(shouldShowDetails = false)
-                } else {
-                    tvMoreInfo.text = resources.getString(R.string.Less_Info)
-                    expandArrow.setState(shouldShowDetails = true)
-                    animateCharacteristicExpansion()
-                }
-            }
-        }
+
     }
 
     fun getServiceName() : String {
@@ -101,7 +75,7 @@ class ServiceItemContainer(
 
     fun setServiceName(newName: String) {
         nameType = NameType.USER
-        _binding.serviceTitle.text = newName
+
     }
 
     private fun animateCharacteristicExpansion() {
