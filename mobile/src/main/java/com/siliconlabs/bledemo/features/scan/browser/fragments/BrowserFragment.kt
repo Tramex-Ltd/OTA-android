@@ -128,7 +128,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
     private val scanFragmentListener = object: ScanFragment.ScanFragmentListener{
         override fun onScanningStateChanged(isOn: Boolean) {
             toggleMainView(isOn, viewModel.isAnyDeviceDiscovered.value ?: false)
-            toggleScanningButton(isOn)
+//            toggleScanningButton(isOn)
             toggleRefreshInfoRunnable(isOn)
 
             if (!isOn) handler.removeCallbacks(refreshScanRunnable)
@@ -287,19 +287,19 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
 
     private fun refreshViewState(viewState: ScannerFragmentViewState) {
         toggleMainView(viewState.isScanningOn, viewState.devicesToShow.isNotEmpty())
-        toggleScanningButton(viewState.isScanningOn)
+//        toggleScanningButton(viewState.isScanningOn)
         devicesAdapter?.updateDevices(viewState.devicesToShow)
     }
 
-    private fun toggleScanningButton(isScanningOn: Boolean) {
-        viewBinding.btnScanning.apply {
-            text = getString(
-                    if (isScanningOn) R.string.button_stop_scanning
-                    else R.string.button_start_scanning
-            )
-            setIsActionOn(isScanningOn)
-        }
-    }
+    // private fun toggleScanningButton(isScanningOn: Boolean) {
+    //     viewBinding.btnScanning.apply {
+    //         text = getString(
+    //                 if (isScanningOn) R.string.button_stop_scanning
+    //                 else R.string.button_start_scanning
+    //         )
+    //         setIsActionOn(isScanningOn)
+    //     }
+    // }
 
     override fun onPause() {
         super.onPause()
@@ -335,7 +335,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
                 setTimestamps()
             }
 
-            toggleScanningButton(true)
+//            toggleScanningButton(true)
             toggleMainView(isScanningOn = true, isAnyDeviceDiscovered = false)
 
             handler.removeCallbacks(refreshScanRunnable)

@@ -906,7 +906,7 @@
     <string name="main_navigation_test_title">Test</string>
     <string name="main_navigation_demo_title">Demo</string>
 
-    <string name="fragment_scan_label">BLE Devices</string>
+    <string name="fragment_scan_label">TRAMEX UPDATER</string>
     <!-- ScanFragment -->
     <string name="tab_scanner_label">Scanner</string>
     <string name="tab_rssi_graph_label">Graph</string>
