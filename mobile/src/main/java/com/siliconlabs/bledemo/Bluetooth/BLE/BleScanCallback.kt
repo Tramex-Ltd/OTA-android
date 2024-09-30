@@ -27,46 +27,37 @@ class BleScanCallback(private val service: BluetoothService) : ScanCallback() {
     override fun onScanResult(callbackType: Int, result: ScanResult?) {
         super.onScanResult(callbackType, result);
 
-
-//        fun ByteArray.toHexString(): String = joinToString("") { "%02x".format(it) }
-
         result?.scanRecord?.manufacturerSpecificData?.let { manufacturerData ->
-//             Parse manufacturerData (it's a SparseArray<ParcelUuid, ByteArray>)
-
             val advertisingBytes = result?.scanRecord?.bytes
             if(manufacturerData.size() > 0 && manufacturerData.keyAt(0) == 1450){
                 Timber.d("YAY")
-//                Timber.d(advertisingBytes)
 
-                for (b in advertisingBytes) {
-                    Timber.d(advertisingBytes.keyAt(i).toString())
+                advertisingBytes?.let { bytes ->
+                    if (bytes.size >= 25 && bytes[25].toInt() == 82) { // Check if the array has at least 11 bytes
+                        service.handleScanCallback(ScanResultCompat.from(result))
+                        //                        val byte10 = bytes[25] // Access the 11th byte (index 10)
+//                        Timber.d(byte10.toString(16).padStart(2, '0'))
+//                        Timber.d("%02x".format(byte10.toInt() and 0xFF))
+                        Timber.d(bytes[25].toString())
+                        // ... use byte10 ...
+                    }
                 }
 
-                service.handleScanCallback(ScanResultCompat.from(result))
-            }
-//
-//            for (i in 0 until manufacturerData.size()) {
-//                val manufacturerId = manufacturerData.keyAt(i)
-//                val data = manufacturerData.valueAt(i)
-//                // Analyze manufacturerId and data
-//                // ... (Logic to identify manufacturer based on ID and data)
-//
-//                if (manufacturerId === 1450) {
-//
-//                    Timber.d("YAY")
-//                    Timber.d(String.format("manu str len:%d",manufacturerData))
-//                    service.handleScanCallback(ScanResultCompat.from(result))
+//                advertisingBytes?.let {  // Use let block to handle null case
+//                    var counter = 0
+//                    for (b in it) {
+//                        counter ++
+//                        Timber.d(counter.toString())
+////                        Timber.d(b.toString(16).padStart(2, '0'))
+//                        Timber.d("%02x".format(b.toInt() and 0xFF))
+//                    }
 //                }
-//            }
-//
-//
-            // manufacturerId.startsWith("05AA") // Example: Bluetooth SIG manufacturer ID
-//            Toast.makeText( requireContext(), manufacturerData.toString(), Toast.LENGTH_SHORT).show()
-//            Toast.makeText(applicationContext, manufacturerData.toString(), Toast.LENGTH_SHORT).show()
-
+//                service.handleScanCallback(ScanResultCompat.from(result))
+            }
         }
-        
     }
+
+
 
 
     override fun onBatchScanResults(results: List<ScanResult>) {
