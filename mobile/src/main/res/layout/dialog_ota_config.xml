@@ -28,14 +28,16 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="14dp"
-            android:layout_weight="1">
+            android:layout_height="11dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            tools:visibility="invisible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="invisible">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -171,7 +173,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/select_apploader_gbl_file" />
+                        android:text="@string/select_apploader_gbl_file"
+                        tools:text="mex5_r89.gbl" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -193,12 +196,13 @@
                 android:layout_marginEnd="@dimen/dialog_margin_between_buttons"
                 android:text="@string/button_cancel" />
 
-            <Button android:id="@+id/ota_proceed"
+            <Button
+                android:id="@+id/ota_proceed"
+                style="@style/dialog_button_positive_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="false"
+                android:enabled="true"
                 android:fontFamily="sans-serif-medium"
-                style="@style/dialog_button_positive_action"
                 android:text="@string/btn_upload" />
         </LinearLayout>
 

@@ -25,7 +25,7 @@ import com.siliconlabs.bledemo.features.iop_test.models.CommonUUID
 import com.siliconlabs.bledemo.utils.*
 import kotlinx.android.synthetic.main.descriptor_container.view.*
 import java.util.*
-
+import timber.log.Timber
 abstract class ServicesFragment(private val isRemote: Boolean) : Fragment(R.layout.fragment_services) {
 
     protected lateinit var binding: FragmentServicesBinding
@@ -193,6 +193,7 @@ abstract class ServicesFragment(private val isRemote: Boolean) : Fragment(R.layo
                 )
             }
             (activity as? DeviceServicesActivity)?.isUiCreated = true // prevent from crashes when clicking "back" when still loading
+            Timber.d("Lee: %s", "connected") // Lee
         }
 
     }

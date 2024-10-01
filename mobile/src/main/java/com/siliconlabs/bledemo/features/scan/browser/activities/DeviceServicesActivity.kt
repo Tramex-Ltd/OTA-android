@@ -88,7 +88,7 @@ class DeviceServicesActivity : BaseActivity() {
     private var currentOtaFileType: OtaFileType = OtaFileType.APPLICATION
 
     // OTA file paths
-    private var appPath = ""
+    private var appPath = "res/raw/mex5_r89.gbl"
     private var stackPath = ""
 
     private var bluetoothBinding: BluetoothService.Binding? = null
@@ -147,6 +147,12 @@ class DeviceServicesActivity : BaseActivity() {
         override fun onMtuChanged(gatt: BluetoothGatt, mtu: Int, status: Int) {
             super.onMtuChanged(gatt, mtu, status)
 
+            // Lee
+            Timber.d("Lee: %s", "callback")
+            //toggleOtaProceedButton();
+            //startOtaUpload()
+            // !Lee
+            //
             when (mtuReadType) {
                 MtuReadType.VIEW_INITIALIZATION -> {
                     MTU = if (status == BluetoothGatt.GATT_SUCCESS) mtu
@@ -346,7 +352,17 @@ class DeviceServicesActivity : BaseActivity() {
 
     private fun startOtaUpload() {
         hideOtaLoadingDialog()
-        otafile = readChosenFile()
+        //otafile = readChosenFile() // lee
+        val rawFileId = R.raw.mex5_r89
+        val inputStream: InputStream = resources.openRawResource(rawFileId)
+
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        inputStream.copyTo(byteArrayOutputStream)
+        inputStream.close()
+
+        otafile = byteArrayOutputStream.toByteArray()
+        Timber.d("LEEEEEEEEEEee ------------------------------- %s %b %b", otafile?.size.toString(), reliable, doubleStepUpload)
+        // Resume
         pack = 0
         if (reliable) { setupMtuDivisible() }
 
@@ -435,6 +451,12 @@ class DeviceServicesActivity : BaseActivity() {
 
         showCharacteristicLoadingAnimation(getString(R.string.debug_mode_device_loading_gatt_info))
         bindBluetoothService()
+        //showOtaConfigDialog() // Show the OTA dialog on connect - lee
+        // while(!isUiCreated){
+
+        // }
+        //startOtaUpload()
+
     }
 
     private fun setupBottomNavigation() {
@@ -627,6 +649,7 @@ class DeviceServicesActivity : BaseActivity() {
                 BluetoothGatt.CONNECTION_PRIORITY_HIGH -> R.string.connection_priority_high
                 else -> R.string.connection_priority_low
             }))
+
         }
     }
 
@@ -712,6 +735,7 @@ class DeviceServicesActivity : BaseActivity() {
     private val otaConfigCallback = object : OtaConfigDialog.Callback {
         override fun onOtaPartialFullChanged(doubleStepUpload: Boolean) {
             this@DeviceServicesActivity.doubleStepUpload = doubleStepUpload
+            Timber.d("Lee: %s", "Opened OTA dialog")
         }
 
         override fun onFileChooserClicked(type: OtaFileType) {
@@ -981,13 +1005,14 @@ class DeviceServicesActivity : BaseActivity() {
     }
 
     private fun prepareFilename() : String {
-        return if (stackPath != "" && doubleStepUpload) {
-            val last = stackPath.lastIndexOf(File.separator)
-            getString(R.string.ota_filename_s, stackPath.substring(last).removePrefix("/"))
-        } else {
-            val last = appPath.lastIndexOf(File.separator)
-            getString(R.string.ota_filename_s, appPath.substring(last).removePrefix("/"))
-        }
+        return "ota.bin"
+        // return if (stackPath != "" && doubleStepUpload) {
+        //     val last = stackPath.lastIndexOf(File.separator)
+        //     getString(R.string.ota_filename_s, stackPath.substring(last).removePrefix("/"))
+        // } else {
+        //     val last = appPath.lastIndexOf(File.separator)
+        //     getString(R.string.ota_filename_s, appPath.substring(last).removePrefix("/"))
+        // }
     }
 
     private fun refreshDeviceCache(): Boolean {
