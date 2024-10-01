@@ -161,7 +161,7 @@
     <!-- OTA -->
     <string name="Preparing_for_OTA">Preparing for OTA</string>
     <string name="preparing_for_upload">Preparing for upload</string>
-    <string name="OTA_Device_Firmware_Update">OTA Device Firmware Update</string>
+    <string name="OTA_Device_Firmware_Update">MEX5 OTA Firmware Update</string>
     <string name="ota_choose_file">Choose file to update</string>
     <string name="ota_type_partial">Partial</string>
     <string name="ota_type_full">Full</string>
@@ -880,8 +880,7 @@
     <string name="min_mtu_value">23</string>
     <string name="error_requesting_mtu">Error when requesting MTU. Status = %d</string>
 
-    <string name="ota_dfu_description">This function may be used to perform Over the Air
-        firmware update to the connected device. </string>
+    <string name="ota_dfu_description">Press the Upload button to update the connected MEX5, or press cancel to return to device info</string>
     <string name="dialog_characteristic_missing">Characteristic missing</string>
     <string name="ota_characteristic_not_found">GATT table of the connected device does not
     contain characteristic required to perform Over the Air firmware update.</string>
