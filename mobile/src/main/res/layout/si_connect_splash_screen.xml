@@ -7,13 +7,16 @@
     android:background="@drawable/si_connect_app_screen_background">
 
 
-<ImageView
-    android:id="@+id/tramexLogo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:src="@drawable/tramexlogogrey"  
- />
+    <ImageView
+        android:id="@+id/tramexLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="124dp"
+        android:layout_gravity="center"
+        android:padding="30dp"
+        android:src="@drawable/tramexlogogrey"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="114dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,12 +29,17 @@
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="299dp"
-        android:layout_height="52dp"
-        android:ems="10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="100"
         android:inputType="text"
-        android:text="Tramex MEX5 OTA Tool"
+        android:text="TRAMEX MEX5 UPDATER"
+        android:textAlignment="center"
+        android:textColor="#54565C"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/tramexLogo"
-        tools:layout_editor_absoluteX="56dp" />
+        tools:layout_editor_absoluteX="-1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

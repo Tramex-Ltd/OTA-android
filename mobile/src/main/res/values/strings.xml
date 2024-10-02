@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name_simplicity_Connect">Si Connect</string>
+    <string name="app_name_simplicity_Connect">TRAMEX MEX5 UPDATER</string>
 
     <!-- Bluetooth bar -->
     <string name="bluetooth_adapter_bar_disabled">Bluetooth adapter disabled</string>
@@ -733,7 +733,7 @@
     <string name="wifi_commissioning_description">Wi-Fi commissioning over BLE</string>
 
     <!--<string name="app_name">Smart Home Automation</string>-->
-    <string name="app_name">Silabs Connect</string>
+    <string name="app_name">TRAMEX MEX5 UPDATER</string>
     <string name="empty_description"> </string>
 
     <!--WifiCommissioningActivity-->
@@ -905,7 +905,7 @@
     <string name="main_navigation_test_title">Test</string>
     <string name="main_navigation_demo_title">Demo</string>
 
-    <string name="fragment_scan_label">TRAMEX UPDATER</string>
+    <string name="fragment_scan_label">TRAMEX MEX5 UPDATER</string>
     <!-- ScanFragment -->
     <string name="tab_scanner_label">Scanner</string>
     <string name="tab_rssi_graph_label">Graph</string>

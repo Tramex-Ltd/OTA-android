@@ -73,7 +73,7 @@ class AdvertiserService : Service() {
                 this, ADVERTISER_NOTIFICATION_REQUEST_CODE, notificationIntent, PendingIntent.FLAG_IMMUTABLE)
 
         return Notification.Builder(this, CHANNEL_ID).apply {
-            setContentTitle("Si Connect")
+            setContentTitle("TRAMEX MEX5 UPDATER")
             setContentText("Advertiser is running...")
             setSmallIcon(R.mipmap.si_launcher)
             setContentIntent(pendingIntent)
