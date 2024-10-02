@@ -20,20 +20,18 @@
 
     <TextView
         android:id="@+id/text_primary"
+        style="@style/full_page_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/space_S"
-        android:gravity="center"
-        style="@style/full_page_info"
-        tools:text="@string/text_gatt_configurator_purpose_explanation" />
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/text_secondary"
+        style="@style/full_page_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@style/full_page_info"
-        tools:text="@string/text_gatt_configurator_no_configured_gatt_servers" />
+        android:gravity="center" />
 
 
 </LinearLayout>

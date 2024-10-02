@@ -85,16 +85,15 @@
                 android:splitMotionEvents="false" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <com.siliconlabs.bledemo.common.views.MainActionButton
-                android:id="@+id/btn_scanning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/extended_fab_margin"
-                android:visibility="gone"
-                tools:visibility="visible"
-                tools:text="@string/btn_create_new" />
+        <!-- <com.siliconlabs.bledemo.common.views.MainActionButton
+            android:id="@+id/btn_scanning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/extended_fab_margin"
+            android:visibility="gone"
+            tools:text="@string/btn_create_new" /> -->
 
     </RelativeLayout>
 

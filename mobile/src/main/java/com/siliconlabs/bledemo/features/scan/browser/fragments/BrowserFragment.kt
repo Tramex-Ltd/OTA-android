@@ -71,7 +71,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
 
         override fun onBluetoothStateChanged(isBluetoothOn: Boolean) {
             toggleBluetoothBar(isBluetoothOn, viewBinding.bluetoothBar)
-            viewBinding.btnScanning.isEnabled = isBluetoothOperationPossible()
+//            viewBinding.btnScanning.isEnabled = isBluetoothOperationPossible()
 
             getScanFragment().setScanFragmentListener(scanFragmentListener)
             viewModel.let {
@@ -85,7 +85,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
 
         override fun onBluetoothPermissionsStateChanged(arePermissionsGranted: Boolean) {
             toggleBluetoothPermissionsBar(arePermissionsGranted, viewBinding.bluetoothPermissionsBar)
-            viewBinding.btnScanning.isEnabled = isBluetoothOperationPossible()
+//            viewBinding.btnScanning.isEnabled = isBluetoothOperationPossible()
 
             viewModel.let {
                 it.setIsScanningOn(isBluetoothOperationPossible())
@@ -113,7 +113,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
         override fun onLocationPermissionStateChanged(isPermissionGranted: Boolean) {
             viewBinding.apply {
                 toggleLocationPermissionBar(isPermissionGranted, locationPermissionBar)
-                btnScanning.isEnabled = isPermissionGranted
+//                btnScanning.isEnabled = isPermissionGranted
             }
         }
         override fun setupLocationBarButtons() {
@@ -157,7 +157,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
                               savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
         viewBinding = FragmentBrowserBinding.inflate(inflater)
-        hidableActionButton = viewBinding.btnScanning
+//        hidableActionButton = viewBinding.btnScanning
         return viewBinding.root
     }
 
@@ -212,7 +212,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
                 if (it) {
                     bluetoothService = (activity as? MainActivity)?.bluetoothService
                     (parentFragment as ViewPagerFragment).setBluetoothService(bluetoothService)
-                    viewBinding.btnScanning.visibility = View.VISIBLE
+//                    viewBinding.btnScanning.visibility = View.VISIBLE
                     refreshViewState(viewModel.getScannerFragmentViewState())
                 }
             }
@@ -268,7 +268,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
     }
 
     private fun setUiListeners() {
-        viewBinding.btnScanning.setOnClickListener { viewModel.toggleScanningState() }
+//        viewBinding.btnScanning.setOnClickListener { viewModel.toggleScanningState() }
     }
 
     override fun onResume() {
@@ -376,7 +376,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
     private fun showConnectingAnimation() {
         activity?.runOnUiThread {
             viewBinding.apply {
-                btnScanning.visibility = View.GONE
+//                btnScanning.visibility = View.GONE
                 flyInBar.visibility = View.VISIBLE
                 flyInBar.startFlyInAnimation(getString(R.string.debug_mode_device_selection_connecting_bar))
             }
@@ -389,7 +389,7 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
             viewBinding.apply {
                 flyInBar.clearBarAnimation()
                 flyInBar.visibility = View.GONE
-                btnScanning.visibility = View.VISIBLE
+//                btnScanning.visibility = View.VISIBLE
             }
         }
     }
