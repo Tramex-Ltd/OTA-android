@@ -867,7 +867,7 @@
     <string name="logs">Logs</string>
     <string name="menu_icon_clear_logs">Clear logs</string>
     <string name="separator"> | </string>
-    <string name="ota_firmware">OTA Firmware</string>
+    <string name="ota_firmware">Update Firmware</string>
     <string name="rename">Rename</string>
 
     <string name="connection_priority">Connection Priority</string>
