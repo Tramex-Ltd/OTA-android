@@ -854,7 +854,7 @@ class BluetoothService : LocalService<BluetoothService>() {
         createNotificationChannel()
 
         val notification = Notification.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.mipmap.si_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(getString(R.string.notification_title_device_has_connected, deviceName))
                 .setContentText(getString(R.string.notification_note_debug_connection))
                 .addAction(buildAction(getString(R.string.button_yes), getYesPendingIntent(device)))
@@ -880,7 +880,7 @@ class BluetoothService : LocalService<BluetoothService>() {
 
     private fun buildAction(actionText: String, actionIntent: PendingIntent) : Notification.Action {
         return Notification.Action.Builder(
-            R.mipmap.si_launcher,
+            R.mipmap.ic_launcher,
             actionText,
             actionIntent
         ).build()

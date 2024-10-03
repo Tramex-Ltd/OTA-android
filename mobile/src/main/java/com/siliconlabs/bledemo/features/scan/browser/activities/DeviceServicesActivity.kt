@@ -88,7 +88,7 @@ class DeviceServicesActivity : BaseActivity() {
     private var currentOtaFileType: OtaFileType = OtaFileType.APPLICATION
 
     // OTA file paths
-    private var appPath = "res/raw/mex5_r89.gbl"
+    private var appPath = "res/raw/mex5.gbl"
     private var stackPath = ""
 
     private var bluetoothBinding: BluetoothService.Binding? = null
@@ -353,7 +353,7 @@ class DeviceServicesActivity : BaseActivity() {
     private fun startOtaUpload() {
         hideOtaLoadingDialog()
         //otafile = readChosenFile() // lee
-        val rawFileId = R.raw.mex5_r89
+        val rawFileId = R.raw.mex5
         val inputStream: InputStream = resources.openRawResource(rawFileId)
 
         val byteArrayOutputStream = ByteArrayOutputStream()

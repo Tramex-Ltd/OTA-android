@@ -36,7 +36,7 @@
         android:name=".application.SiliconLabsDemoApplication"
         android:allowBackup="false"
         android:enableOnBackInvokedCallback="true"
-        android:icon="@mipmap/si_launcher_round"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name_simplicity_Connect"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"

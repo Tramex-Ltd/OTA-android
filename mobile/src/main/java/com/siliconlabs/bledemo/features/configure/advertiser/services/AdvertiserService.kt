@@ -75,7 +75,7 @@ class AdvertiserService : Service() {
         return Notification.Builder(this, CHANNEL_ID).apply {
             setContentTitle("TRAMEX MEX5 UPDATER")
             setContentText("Advertiser is running...")
-            setSmallIcon(R.mipmap.si_launcher)
+            setSmallIcon(R.mipmap.ic_launcher)
             setContentIntent(pendingIntent)
             setShowWhen(false)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
