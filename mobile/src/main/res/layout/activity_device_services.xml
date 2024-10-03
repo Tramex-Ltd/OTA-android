@@ -55,22 +55,23 @@
                 android:layout_alignWithParentIfMissing="true"
                 android:layout_alignBaseline="@id/tv_bond_state_with_rssi"
                 android:layout_alignBottom="@id/tv_bond_state_with_rssi"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
+                android:layout_alignParentTop="false"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="95dp"
+                android:layout_marginStart="98dp"
                 android:layout_marginTop="338dp"
-                android:layout_marginEnd="103dp"
-                android:layout_marginRight="103dp"
-                android:layout_marginBottom="-20dp"
+                android:layout_marginEnd="115dp"
+                android:layout_marginRight="115dp"
+                android:layout_marginBottom="-104dp"
+                android:layout_toEndOf="@+id/tv_bond_state_with_rssi"
                 android:background="#54565C"
                 android:clickable="true"
                 android:padding="10dp"
                 android:text="@string/ota_firmware"
                 android:textAlignment="center"
                 android:textColor="@color/bar_with_additional_info"
-                android:typeface="normal" />
+                android:typeface="normal"
+                android:visibility="visible" />
 
         </RelativeLayout>
 

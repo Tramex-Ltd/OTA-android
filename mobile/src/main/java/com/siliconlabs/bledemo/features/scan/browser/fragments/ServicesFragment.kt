@@ -1,5 +1,7 @@
 package com.siliconlabs.bledemo.features.scan.browser.fragments
 
+
+import android.app.Activity
 import android.bluetooth.BluetoothGattCharacteristic
 import android.bluetooth.BluetoothGattDescriptor
 import android.bluetooth.BluetoothGattService
@@ -8,24 +10,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.siliconlabs.bledemo.bluetooth.parsing.DescriptorParser
-import com.siliconlabs.bledemo.features.scan.browser.activities.DeviceServicesActivity
-import com.siliconlabs.bledemo.features.scan.browser.dialogs.DictionaryEntryEditDialog
-import com.siliconlabs.bledemo.features.scan.browser.adapters.MappingCallback
-import com.siliconlabs.bledemo.features.scan.browser.models.Mapping
 import com.siliconlabs.bledemo.R
-import com.siliconlabs.bledemo.features.scan.browser.views.CharacteristicItemContainer
-import com.siliconlabs.bledemo.features.scan.browser.views.DescriptorContainer
-import com.siliconlabs.bledemo.features.scan.browser.views.ServiceItemContainer
+import com.siliconlabs.bledemo.bluetooth.parsing.DescriptorParser
 import com.siliconlabs.bledemo.databinding.FragmentServicesBinding
 import com.siliconlabs.bledemo.features.configure.gatt_configurator.models.Property
 import com.siliconlabs.bledemo.features.iop_test.models.CommonUUID
+import com.siliconlabs.bledemo.features.scan.browser.activities.DeviceServicesActivity
+import com.siliconlabs.bledemo.features.scan.browser.adapters.MappingCallback
+import com.siliconlabs.bledemo.features.scan.browser.dialogs.DictionaryEntryEditDialog
+import com.siliconlabs.bledemo.features.scan.browser.models.Mapping
+import com.siliconlabs.bledemo.features.scan.browser.views.CharacteristicItemContainer
+import com.siliconlabs.bledemo.features.scan.browser.views.DescriptorContainer
+import com.siliconlabs.bledemo.features.scan.browser.views.ServiceItemContainer
 import com.siliconlabs.bledemo.utils.*
 import kotlinx.android.synthetic.main.descriptor_container.view.*
-import java.util.*
 import timber.log.Timber
+import java.util.*
+
+
 abstract class ServicesFragment(private val isRemote: Boolean) : Fragment(R.layout.fragment_services) {
 
     protected lateinit var binding: FragmentServicesBinding
@@ -193,7 +198,17 @@ abstract class ServicesFragment(private val isRemote: Boolean) : Fragment(R.layo
                 )
             }
             (activity as? DeviceServicesActivity)?.isUiCreated = true // prevent from crashes when clicking "back" when still loading
-            Timber.d("Lee: %s", "connected") // Lee
+
+            // Lee
+ //           Timber.d("Lee: %s", "connected")
+//            val textView:TextView = window.decorView.findViewById<TextView>(R.id.tv_ota_firmware)
+//            var textView = findViewById(R.id.tv_ota_firmware) as TextView
+//            Timber.d("Lee: before %d", textView.visibility )
+//            textView.visibility = View.VISIBLE
+//            Timber.d("Lee: after %d", textView.visibility )
+
+
+
         }
 
     }

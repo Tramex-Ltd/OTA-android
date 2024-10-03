@@ -138,6 +138,7 @@ class DeviceServicesActivity : BaseActivity() {
 
     private val gattCallback: TimeoutGattCallback = object : TimeoutGattCallback() {
         override fun onReadRemoteRssi(gatt: BluetoothGatt, rssi: Int, status: Int) {
+
             if (viewState == ViewState.IDLE) {
                 super.onReadRemoteRssi(gatt, rssi, status)
                 runOnUiThread { tv_rssi.text = resources.getString(R.string.n_dBm, rssi) }
@@ -147,12 +148,6 @@ class DeviceServicesActivity : BaseActivity() {
         override fun onMtuChanged(gatt: BluetoothGatt, mtu: Int, status: Int) {
             super.onMtuChanged(gatt, mtu, status)
 
-            // Lee
-            Timber.d("Lee: %s", "callback")
-            //toggleOtaProceedButton();
-            //startOtaUpload()
-            // !Lee
-            //
             when (mtuReadType) {
                 MtuReadType.VIEW_INITIALIZATION -> {
                     MTU = if (status == BluetoothGatt.GATT_SUCCESS) mtu
@@ -188,6 +183,7 @@ class DeviceServicesActivity : BaseActivity() {
 
             when (newState) {
                 BluetoothGatt.STATE_CONNECTED -> {
+
                     if (viewState == ViewState.REBOOTING ||
                         viewState == ViewState.REBOOTING_NEW_FIRMWARE) {
                         handler.postDelayed({
@@ -841,13 +837,20 @@ class DeviceServicesActivity : BaseActivity() {
     }
 
     private fun printServicesInfo(gatt: BluetoothGatt) {
-        Timber.i("onServicesDiscovered(): services count = ${gatt.services.size}")
+
         gatt.services.forEach { service ->
             Timber.i("onServicesDiscovered(): service UUID = ${service.uuid}, char count = ${service.characteristics.size}")
             service.characteristics.forEach {
                 Timber.i("onServicesDiscovered(): characteristic UUID = ${it.uuid}, properties = ${it.properties}")
             }
         }
+
+//        val textView = window.decorView.findViewById<TextView>(R.id.tv_ota_firmware)
+//        if (textView != null) {
+//            //Timber.d("Lee: before %d", textView.visibility )
+//            textView.visibility = View.VISIBLE
+//            //Timber.d("Lee: after %d", textView.visibility )
+//        }
     }
 
     private fun writeOtaControl(ctrl: Byte) {
