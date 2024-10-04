@@ -314,15 +314,15 @@ class BrowserFragment : BaseServiceDependentMainMenuFragment(),
         inflater.inflate(R.menu.menu_browser, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_filter -> {
-                getScanFragment().toggleFilterFragment(shouldShowFilterFragment = true)
-                true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.menu_filter -> {
+//                getScanFragment().toggleFilterFragment(shouldShowFilterFragment = true)
+//                true
+//            }
+//            else -> return super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onRefresh() {
         if (isBluetoothOperationPossible() &&
