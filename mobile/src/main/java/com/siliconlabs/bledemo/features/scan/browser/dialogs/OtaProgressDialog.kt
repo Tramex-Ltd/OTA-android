@@ -40,7 +40,6 @@ class OtaProgressDialog(
 //            fileSize.text = getString(R.string.ota_file_size, otaInfo.fileSize)
 //            packetSize.text = otaInfo.packetSize.toString()
 //            otaNumberOfSteps.text = prepareStepsInfo()
-            otabutton.isEnabled = true // Lee
             connectingSpinner.visibility = View.VISIBLE
             startChronometer()
 
