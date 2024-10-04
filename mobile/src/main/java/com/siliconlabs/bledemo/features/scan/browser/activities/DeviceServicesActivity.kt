@@ -141,7 +141,9 @@ class DeviceServicesActivity : BaseActivity() {
 
             if (viewState == ViewState.IDLE) {
                 super.onReadRemoteRssi(gatt, rssi, status)
-                runOnUiThread { tv_rssi.text = resources.getString(R.string.n_dBm, rssi) }
+                runOnUiThread { 
+                	//tv_rssi.text = resources.getString(R.string.n_dBm, rssi) 
+                	}
             }
         }
 

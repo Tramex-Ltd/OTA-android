@@ -175,7 +175,7 @@
     <string name="Reliability">Reliability</string>
     <string name="Application_colon">Application:</string>
     <string name="Apploader_colon">Apploader:</string>
-    <string name="btn_upload">Upload</string>
+    <string name="btn_upload">Update</string>
     <string name="request_mtu">Request MTU</string>
     <string name="End">End</string>
     <string name="mtu_max">250</string>
@@ -867,7 +867,7 @@
     <string name="logs">Logs</string>
     <string name="menu_icon_clear_logs">Clear logs</string>
     <string name="separator"> | </string>
-    <string name="ota_firmware">Update Firmware</string>
+    <string name="ota_firmware">Prepare Update</string>
     <string name="rename">Rename</string>
 
     <string name="connection_priority">Connection Priority</string>
@@ -880,7 +880,7 @@
     <string name="min_mtu_value">23</string>
     <string name="error_requesting_mtu">Error when requesting MTU. Status = %d</string>
 
-    <string name="ota_dfu_description">Press the Upload button to update the connected MEX5, or press cancel to return to device info</string>
+    <string name="ota_dfu_description">Press the Upload button to update the connected MEX5, or press cancel to return</string>
     <string name="dialog_characteristic_missing">Characteristic missing</string>
     <string name="ota_characteristic_not_found">GATT table of the connected device does not
     contain characteristic required to perform Over the Air firmware update.</string>
