@@ -16,7 +16,7 @@ repositories {
 
 android {
     compileSdk = 34
-    namespace = "com.siliconlabs.bledemo"
+    namespace = "com.tramexmeters.mex5updater"
 
     defaultConfig {
         minSdk = 29

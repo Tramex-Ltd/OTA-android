@@ -55,7 +55,7 @@
 
                 </LinearLayout>
 
-                <com.siliconlabs.bledemo.common.views.ActionButton
+                <com.tramexmeters.mex5updater.common.views.ActionButton
                     android:id="@+id/connection_btn"
                     style="@style/button_with_states"
                     android:layout_width="wrap_content"
