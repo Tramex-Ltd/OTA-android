@@ -59,9 +59,9 @@ android {
     productFlavors {
         create("Si-Connect") {
             dimension = versionDim
-            applicationId = "com.siliconlabs.bledemo"
+            applicationId = "com.tramexmeters.mex5updater"
             versionCode = 54
-            versionName = "2.9.2"
+            versionName = "1.1.92"
         }
     }
 
