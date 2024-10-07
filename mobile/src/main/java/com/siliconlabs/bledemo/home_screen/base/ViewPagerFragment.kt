@@ -50,12 +50,12 @@ class ViewPagerFragment : Fragment() {
             adapter = ScanPagerAdapter()
         }
 
-        TabLayoutMediator(scan_tab_layout, scan_view_pager2) { tab, position ->
-            tab.text = when (position) {
-                0 -> getString(R.string.tab_scanner_label)
-                else -> null
-            }
-        }.attach()
+//        TabLayoutMediator(scan_tab_layout, scan_view_pager2) { tab, position ->
+//            tab.text = when (position) {
+//                0 -> getString(R.string.tab_scanner_label)
+//                else -> null
+//            }
+//        }.attach()
     }
 
     private fun setupDataObservers() {

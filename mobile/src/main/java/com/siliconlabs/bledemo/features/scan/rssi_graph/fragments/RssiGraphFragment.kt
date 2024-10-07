@@ -226,7 +226,7 @@ class RssiGraphFragment : BaseServiceDependentMainMenuFragment() {
 
     private fun toggleScanningViews(isScanningOn: Boolean) {
         toggleLabelView(viewModel.isAnyDeviceDiscovered.value ?: false, isScanningOn)
-        toggleScanningButton(isScanningOn)
+//        toggleScanningButton(isScanningOn)
     }
 
     override fun onDestroy() {
@@ -379,15 +379,15 @@ class RssiGraphFragment : BaseServiceDependentMainMenuFragment() {
         }
     }
 
-    private fun toggleScanningButton(isScanningOn: Boolean) {
-        _binding.rssiGraphBtnScanning.apply {
-            text = getString(
-                    if (isScanningOn) R.string.button_stop_scanning
-                    else R.string.button_start_scanning
-            )
-            setIsActionOn(isScanningOn)
-        }
-    }
+    // private fun toggleScanningButton(isScanningOn: Boolean) {
+    //     _binding.rssiGraphBtnScanning.apply {
+    //         text = getString(
+    //                 if (isScanningOn) R.string.button_stop_scanning
+    //                 else R.string.button_start_scanning
+    //         )
+    //         setIsActionOn(isScanningOn)
+    //     }
+//    }
 
     companion object {
         private const val GRAPH_REFRESH_PERIOD = 250L // ms

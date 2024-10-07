@@ -23,16 +23,18 @@
         <RelativeLayout
             android:id="@+id/connection_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/bar_with_additional_info"
+            android:paddingHorizontal="@dimen/space_S"
             android:paddingVertical="@dimen/space_XS"
-            android:paddingHorizontal="@dimen/space_S">
+            android:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/tv_bond_state_with_rssi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true" >
+                android:layout_centerVertical="true"
+                android:visibility="invisible">
 
                 <TextView
                     android:id="@+id/tv_rssi"
@@ -40,19 +42,36 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/silabs_black"
                     android:textSize="@dimen/rssi_indicator_text_size"
-                    tools:text="- dBm"/>
+                    tools:text="- dBm"
+                    tools:visibility="gone" />
 
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_ota_firmware"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TitleLarge"
+                android:layout_width="229dp"
+                android:layout_height="48dp"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_alignBaseline="@id/tv_bond_state_with_rssi"
+                android:layout_alignBottom="@id/tv_bond_state_with_rssi"
+                android:layout_alignParentTop="false"
                 android:layout_alignParentEnd="true"
-                android:background="?attr/selectableItemBackground"
-                android:padding="@dimen/space_XS"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="338dp"
+                android:layout_marginEnd="115dp"
+                android:layout_marginRight="115dp"
+                android:layout_marginBottom="-104dp"
+                android:layout_toEndOf="@+id/tv_bond_state_with_rssi"
+                android:background="#54565C"
+                android:clickable="true"
+                android:padding="10dp"
                 android:text="@string/ota_firmware"
-                android:textColor="@color/silabs_black"/>
+                android:textAlignment="center"
+                android:textColor="@color/bar_with_additional_info"
+                android:typeface="normal"
+                android:visibility="visible" />
 
         </RelativeLayout>
 
@@ -64,7 +83,8 @@
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/services_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:visibility="invisible" />
 
         </RelativeLayout>
 
@@ -72,8 +92,9 @@
             android:id="@+id/fly_in_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/scanning_animation_bar_height"
+            android:background="#54565C"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
 
     </LinearLayout>

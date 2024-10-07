@@ -28,26 +28,29 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="11dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            tools:visibility="invisible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.3"
-                        android:gravity="center_vertical"
                         android:fontFamily="sans-serif"
-                        android:textSize="@dimen/ota_config_dialog_text_size"
-                        android:text="@string/type_colon" />
+                        android:gravity="center_vertical"
+                        android:text="@string/type_colon"
+                        android:textSize="@dimen/ota_config_dialog_text_size" />
 
                     <RadioGroup
                         android:layout_width="0dp"
@@ -63,8 +66,8 @@
                             android:layout_weight="1"
                             android:checked="true"
                             android:fontFamily="sans-serif"
-                            android:textSize="@dimen/ota_config_dialog_text_size"
-                            android:text="@string/ota_type_partial" />
+                            android:text="@string/ota_type_partial"
+                            android:textSize="@dimen/ota_config_dialog_text_size" />
 
                         <RadioButton
                             android:id="@+id/rb_type_full"
@@ -72,28 +75,28 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif"
-                            android:textSize="@dimen/ota_config_dialog_text_size"
-                            android:text="@string/ota_type_full" />
+                            android:text="Update"
+                            android:textSize="@dimen/ota_config_dialog_text_size" />
                     </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
                         android:layout_weight="0.3"
-                        android:textSize="@dimen/ota_config_dialog_text_size"
-                        android:text="@string/Mode_colon" />
+                        android:gravity="center_vertical"
+                        android:text="@string/Mode_colon"
+                        android:textSize="@dimen/ota_config_dialog_text_size" />
 
                     <RadioGroup
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
                         android:layout_weight="0.7"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -103,8 +106,8 @@
                             android:layout_weight="1"
                             android:checked="true"
                             android:fontFamily="sans-serif"
-                            android:textSize="@dimen/ota_config_dialog_text_size"
-                            android:text="@string/Reliability" />
+                            android:text="@string/Reliability"
+                            android:textSize="@dimen/ota_config_dialog_text_size" />
 
                         <RadioButton
                             android:id="@+id/speed_radio_button"
@@ -112,8 +115,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif"
-                            android:textSize="@dimen/ota_config_dialog_text_size"
-                            android:text="@string/Speed" />
+                            android:text="@string/Speed"
+                            android:textSize="@dimen/ota_config_dialog_text_size" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -121,29 +124,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="@dimen/space_XS"
-                    android:background="@color/divider_line"/>
+                    android:background="@color/divider_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_XS" >
+                    android:layout_marginBottom="@dimen/space_XS">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.3"
-                        android:gravity="center_vertical"
                         android:fontFamily="sans-serif"
-                        android:textSize="@dimen/ota_config_dialog_text_size"
-                        android:text="@string/Application_colon" />
+                        android:gravity="center_vertical"
+                        android:text="@string/Application_colon"
+                        android:textSize="@dimen/ota_config_dialog_text_size" />
 
                     <Button
                         android:id="@+id/select_app_file_btn"
                         style="@style/button_external_link"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:layout_weight="0.7"
+                        android:gravity="center"
                         android:text="@string/select_application_gbl_file" />
                 </LinearLayout>
 
@@ -158,19 +161,20 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.3"
-                        android:gravity="center_vertical"
                         android:fontFamily="sans-serif"
-                        android:textSize="@dimen/ota_config_dialog_text_size"
-                        android:text="@string/Apploader_colon" />
+                        android:gravity="center_vertical"
+                        android:text="@string/Apploader_colon"
+                        android:textSize="@dimen/ota_config_dialog_text_size" />
 
                     <Button
                         android:id="@+id/select_apploader_file_btn"
                         style="@style/button_external_link"
                         android:layout_width="0dp"
-                        android:layout_weight="0.7"
                         android:layout_height="match_parent"
+                        android:layout_weight="0.7"
                         android:gravity="center"
-                        android:text="@string/select_apploader_gbl_file" />
+                        android:text="@string/select_apploader_gbl_file"
+                        tools:text="mex5.gbl" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -192,13 +196,14 @@
                 android:layout_marginEnd="@dimen/dialog_margin_between_buttons"
                 android:text="@string/button_cancel" />
 
-            <Button android:id="@+id/ota_proceed"
+            <Button
+                android:id="@+id/ota_proceed"
+                style="@style/dialog_button_positive_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="false"
+                android:enabled="true"
                 android:fontFamily="sans-serif-medium"
-                style="@style/dialog_button_positive_action"
-                android:text="@string/btn_upload" />
+                android:text="Update" />
         </LinearLayout>
 
     </LinearLayout>

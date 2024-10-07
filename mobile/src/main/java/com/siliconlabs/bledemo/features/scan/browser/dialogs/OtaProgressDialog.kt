@@ -36,11 +36,10 @@ class OtaProgressDialog(
 
     private fun initViewState() {
         _binding.apply {
-            fileName.text = otaInfo.fileName
-            fileSize.text = getString(R.string.ota_file_size, otaInfo.fileSize)
-            packetSize.text = otaInfo.packetSize.toString()
-            otaNumberOfSteps.text = prepareStepsInfo()
-            otabutton.isEnabled = false
+//            fileName.text = otaInfo.fileName
+//            fileSize.text = getString(R.string.ota_file_size, otaInfo.fileSize)
+//            packetSize.text = otaInfo.packetSize.toString()
+//            otaNumberOfSteps.text = prepareStepsInfo()
             connectingSpinner.visibility = View.VISIBLE
             startChronometer()
 
@@ -51,7 +50,7 @@ class OtaProgressDialog(
     }
 
     fun updateDataRate(dataRate: Float) {
-        _binding.dataRate.text = getString(R.string.unit_value_kbit_per_second, dataRate)
+//        _binding.dataRate.text = getString(R.string.unit_value_kbit_per_second, dataRate)
     }
 
     fun updateDataProgress(progress: Int) {

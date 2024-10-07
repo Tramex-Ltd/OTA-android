@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
-    <item
+    <!-- <item
         android:id="@+id/menu_filter"
         android:icon="@drawable/redesign_ic_menu_scanner_filter"
         app:iconTint="@color/menu_icon"
         android:title="@string/filter_menu_icon"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" /> -->
 
 </menu>

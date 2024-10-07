@@ -99,12 +99,7 @@ class GdxAdapter(private val backgroundColor: Int, modelType: String?) :
         initModel()
     }
 
-    private val modelFilename: String
-        private get() = when (modelType) {
-            ModelType.SENSE -> "data/TBSense_Rev_Lowpoly.g3dj"
-            ModelType.BLUE -> "data/BRD4184A_LowPoly.g3dj"
-            else -> "data/BRD4184A_LowPoly.g3dj"
-        }
+
 
     private fun initOrientation() {
         initMatrix.setToRotation(1f, 0f, 0f, 90f)
@@ -114,7 +109,7 @@ class GdxAdapter(private val backgroundColor: Int, modelType: String?) :
     fun initModel() {
         // initMatrix is our starting position, it has to compensate for any transforms
         // in the model file we load
-        assets.load(modelFilename, Model::class.java)
+//        assets.load(modelFilename, Model::class.java)
         initOrientation()
         loading = true
     }
@@ -122,7 +117,7 @@ class GdxAdapter(private val backgroundColor: Int, modelType: String?) :
     var lightMaterials: MutableList<Material>? = null
     private fun doneLoading() {
         lightMaterials = ArrayList()
-        model = assets.get(modelFilename, Model::class.java)
+//        model = assets.get(modelFilename, Model::class.java)
         instance = ModelInstance(model)
         // Example of adding parts to which will get toggled when the light comes on
         for (node in instance!!.nodes) {

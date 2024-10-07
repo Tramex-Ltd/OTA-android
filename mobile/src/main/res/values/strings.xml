@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name_simplicity_Connect">Si Connect</string>
+    <string name="app_name_simplicity_Connect">TRAMEX MEX5 UPDATER</string>
 
     <!-- Bluetooth bar -->
     <string name="bluetooth_adapter_bar_disabled">Bluetooth adapter disabled</string>
@@ -161,7 +161,7 @@
     <!-- OTA -->
     <string name="Preparing_for_OTA">Preparing for OTA</string>
     <string name="preparing_for_upload">Preparing for upload</string>
-    <string name="OTA_Device_Firmware_Update">OTA Device Firmware Update</string>
+    <string name="OTA_Device_Firmware_Update">MEX5 OTA Firmware Update</string>
     <string name="ota_choose_file">Choose file to update</string>
     <string name="ota_type_partial">Partial</string>
     <string name="ota_type_full">Full</string>
@@ -175,7 +175,7 @@
     <string name="Reliability">Reliability</string>
     <string name="Application_colon">Application:</string>
     <string name="Apploader_colon">Apploader:</string>
-    <string name="btn_upload">Upload</string>
+    <string name="btn_upload">Update</string>
     <string name="request_mtu">Request MTU</string>
     <string name="End">End</string>
     <string name="mtu_max">250</string>
@@ -733,7 +733,7 @@
     <string name="wifi_commissioning_description">Wi-Fi commissioning over BLE</string>
 
     <!--<string name="app_name">Smart Home Automation</string>-->
-    <string name="app_name">Silabs Connect</string>
+    <string name="app_name">TRAMEX MEX5 UPDATER</string>
     <string name="empty_description"> </string>
 
     <!--WifiCommissioningActivity-->
@@ -867,7 +867,7 @@
     <string name="logs">Logs</string>
     <string name="menu_icon_clear_logs">Clear logs</string>
     <string name="separator"> | </string>
-    <string name="ota_firmware">OTA Firmware</string>
+    <string name="ota_firmware">Prepare Update</string>
     <string name="rename">Rename</string>
 
     <string name="connection_priority">Connection Priority</string>
@@ -880,8 +880,7 @@
     <string name="min_mtu_value">23</string>
     <string name="error_requesting_mtu">Error when requesting MTU. Status = %d</string>
 
-    <string name="ota_dfu_description">This function may be used to perform Over the Air
-        firmware update to the connected device. </string>
+    <string name="ota_dfu_description">Press the Upload button to update the connected MEX5, or press cancel to return</string>
     <string name="dialog_characteristic_missing">Characteristic missing</string>
     <string name="ota_characteristic_not_found">GATT table of the connected device does not
     contain characteristic required to perform Over the Air firmware update.</string>
@@ -906,7 +905,7 @@
     <string name="main_navigation_test_title">Test</string>
     <string name="main_navigation_demo_title">Demo</string>
 
-    <string name="fragment_scan_label">BLE Devices</string>
+    <string name="fragment_scan_label">TRAMEX MEX5 UPDATER</string>
     <!-- ScanFragment -->
     <string name="tab_scanner_label">Scanner</string>
     <string name="tab_rssi_graph_label">Graph</string>

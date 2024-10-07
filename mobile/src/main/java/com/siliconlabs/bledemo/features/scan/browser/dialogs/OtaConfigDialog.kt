@@ -38,7 +38,7 @@ class OtaConfigDialog(
             OtaFileType.APPLICATION -> _binding.selectAppFileBtn.text = name
             OtaFileType.APPLOADER -> _binding.selectApploaderFileBtn.text = name
         }
-        toggleOtaProceedButton()
+        //toggleOtaProceedButton()
     }
 
     private fun setupUiListeners() {
@@ -75,7 +75,7 @@ class OtaConfigDialog(
     }
 
     private fun onModeChanged() {
-        toggleOtaProceedButton()
+        //toggleOtaProceedButton()
         toggleApploaderLayout()
     }
 
