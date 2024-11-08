@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.tramexmeters.mex5updater.home_screen.views.BluetoothEnableBar
+    <com.tramexmeters.mex5update.home_screen.views.BluetoothEnableBar
         android:id="@+id/bluetooth_enable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <com.tramexmeters.mex5updater.home_screen.views.BluetoothPermissionsBar
+    <com.tramexmeters.mex5update.home_screen.views.BluetoothPermissionsBar
         android:id="@+id/bluetooth_permissions_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

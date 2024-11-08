@@ -88,7 +88,7 @@
 
         </RelativeLayout>
 
-        <com.tramexmeters.mex5updater.common.views.FlyInBar
+        <com.tramexmeters.mex5update.common.views.FlyInBar
             android:id="@+id/fly_in_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/scanning_animation_bar_height"

@@ -7,5 +7,5 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.tramexmeters.mex5updater.features.demo.throughput.fragments.ThroughputFragment" />
+        android:name="com.tramexmeters.mex5update.features.demo.throughput.fragments.ThroughputFragment" />
 </RelativeLayout>

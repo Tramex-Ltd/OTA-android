@@ -7,7 +7,7 @@
     android:focusableInTouchMode="true"
     tools:context=".features.configure.advertiser.activities.AdvertiserConfigActivity">
 
-    <com.tramexmeters.mex5updater.common.views.HorizontalShadow
+    <com.tramexmeters.mex5update.common.views.HorizontalShadow
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

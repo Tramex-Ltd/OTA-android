@@ -16,7 +16,7 @@ repositories {
 
 android {
     compileSdk = 34
-    namespace = "com.tramexmeters.mex5updater"
+    namespace = "com.tramexmeters.mex5update"
 
     defaultConfig {
         minSdk = 29
@@ -59,7 +59,7 @@ android {
     productFlavors {
         create("Si-Connect") {
             dimension = versionDim
-            applicationId = "com.tramexmeters.mex5updater"
+            applicationId = "com.tramexmeters.mex5update"
             versionCode = 54
             versionName = "1.1.92"
         }

@@ -125,7 +125,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.tramexmeters.mex5updater.provider"
+            android:authorities="com.tramexmeters.mex5update.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
