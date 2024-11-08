@@ -34,7 +34,7 @@
         android:layout_marginTop="100dp"
         android:ems="100"
         android:inputType="text"
-        android:text="TRAMEX MEX5 UPDATER"
+        android:text="MEX5 UPDATE"
         android:textAlignment="center"
         android:textColor="#54565C"
         android:textSize="24sp"
